@@ -1,0 +1,28 @@
+{
+  "name": "vuex-map-decorators",
+  "version": "0.0.1",
+  "description": "The TypeScript decorators that map vuex store to component",
+  "keywords": [
+    "typescript",
+    "vuex"
+  ],
+  "author": "taqm",
+  "license": "MIT",
+  "main": "lib/index.js",
+  "scripts": {
+    "build": "tsc"
+  },
+  "devDependencies": {
+    "tslint": "^5.11.0",
+    "tslint-config-airbnb": "^5.11.0",
+    "typescript": "^3.1.3",
+    "vue": "^2.5.17",
+    "vue-class-component": "^6.3.0",
+    "vuex": "^3.0.1"
+  },
+  "peerDependencies": {
+    "vue": "^2.5.0",
+    "vue-class-component": "^6.0.0",
+    "vuex": "^3.0.0"
+  }
+}
