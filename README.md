@@ -102,7 +102,7 @@ const ns = namespace<...>('sample');
 $store.commit(ns.Mutation('increment').key));
 // ↓
 $store.commit('sample/increment');
-// -> sample/count
+// -> sample/increment
 ```
 
 ## Future
