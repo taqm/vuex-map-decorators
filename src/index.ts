@@ -20,11 +20,12 @@ interface VuexDecorator extends VueDecorator {
   key: string;
 }
 
+type DecoratorMaker<T> = (k: keyof T) => VuexDecorator;
 type DecoratorInterface<S, M, G, A> = (
-  & IfNotNever<S, { State: (k: keyof S) => VuexDecorator}>
-  & IfNotNever<M, { Mutation: (k: keyof M) => VuexDecorator}>
-  & IfNotNever<G, { Getter: (k: keyof G) => VuexDecorator}>
-  & IfNotNever<A, { Action: (k: keyof A) => VuexDecorator}>
+  & IfNotNever<S, { State: DecoratorMaker<S> }>
+  & IfNotNever<M, { Mutation: DecoratorMaker<M> }>
+  & IfNotNever<G, { Getter: DecoratorMaker<G> }>
+  & IfNotNever<A, { Action: DecoratorMaker<A> }>
 );
 
 function createVuexDecorator(
@@ -60,9 +61,9 @@ export function namespace<
   A = never,
 >(n: string): DecoratorInterface<S, M, G, A> {
   return {
-    State: (k: keyof S) => State(k as string, n),
-    Mutation: (k: keyof M) => Mutation(k as string, n),
-    Getter: (k: keyof G) => Getter(k as string, n),
-    Action: (k: keyof A) => Action(k as string, n),
+    State: (k: keyof S) => State<S>(k, n),
+    Mutation: (k: keyof M) => Mutation<M>(k, n),
+    Getter: (k: keyof G) => Getter<G>(k, n),
+    Action: (k: keyof A) => Action<A>(k, n),
   };
 }
