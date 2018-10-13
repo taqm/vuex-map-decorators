@@ -14,7 +14,7 @@ type VuexMapper = (
 );
 
 type IsNever<N> = [N] extends [never] ? 'T' : 'F';
-type IfNotNever<T, R> = {T: {}, F: R }[IsNever<T>];
+export type IfNotNever<T, R> = {T: {}, F: R }[IsNever<T>];
 
 interface VuexDecorator extends VueDecorator {
   key: string;

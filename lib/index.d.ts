@@ -1,6 +1,6 @@
 import { VueDecorator } from 'vue-class-component';
 declare type IsNever<N> = [N] extends [never] ? 'T' : 'F';
-declare type IfNotNever<T, R> = {
+export declare type IfNotNever<T, R> = {
     T: {};
     F: R;
 }[IsNever<T>];
