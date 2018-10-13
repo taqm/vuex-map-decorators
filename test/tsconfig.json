@@ -2,9 +2,11 @@
   "compilerOptions": {
     "module": "commonjs",
     "target": "es5",
-    "strict": true,
     "declaration": true,
-    "outDir": "lib",
+    "outDir": "../work",
+    "strict": true,
+    "sourceMap": true,
+    "experimentalDecorators": true,
     "lib": [
       "es5",
       "es6",
@@ -12,6 +14,6 @@
     ]
   },
   "include": [
-    "./src/*"
+    "./*"
   ]
 }
