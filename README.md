@@ -60,9 +60,7 @@ const state: SampleState = {
 };
 
 const mutations = {
-  increment: (state: State) => {
-    state.count += 1;
-  },
+  // ...
 };
 
 const getters = {
@@ -96,6 +94,17 @@ const ns = namespace<
 ns.Mutation // <- Error
 ```
 Only predefined ones can be referenced.
+
+## use native vuex context
+```typescript
+const ns = namespace<...>('sample');
+
+$store.commit(ns.Mutation('increment').key));
+// ↓
+$store.commit('sample/increment');
+
+// -> sample/count
+```
 
 ## Future
 - Add test code
