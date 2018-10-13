@@ -16,9 +16,9 @@ declare type DecoratorInterface<S, M, G, A> = (IfNotNever<S, {
 }> & IfNotNever<A, {
     Action: (k: keyof A) => VuexDecorator;
 }>);
-export declare const State: <T = unknown>(key: string | keyof T, namesapce?: string | undefined) => VuexDecorator;
-export declare const Mutation: <T = unknown>(key: string | keyof T, namesapce?: string | undefined) => VuexDecorator;
-export declare const Getter: <T = unknown>(key: string | keyof T, namesapce?: string | undefined) => VuexDecorator;
-export declare const Action: <T = unknown>(key: string | keyof T, namesapce?: string | undefined) => VuexDecorator;
+export declare const State: <T = unknown>(key: keyof T, namesapce?: string | undefined) => VuexDecorator;
+export declare const Mutation: <T = unknown>(key: keyof T, namesapce?: string | undefined) => VuexDecorator;
+export declare const Getter: <T = unknown>(key: keyof T, namesapce?: string | undefined) => VuexDecorator;
+export declare const Action: <T = unknown>(key: keyof T, namesapce?: string | undefined) => VuexDecorator;
 export declare function namespace<S = never, M = never, G = never, A = never>(n: string): DecoratorInterface<S, M, G, A>;
 export {};

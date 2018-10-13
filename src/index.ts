@@ -31,7 +31,7 @@ function createVuexDecorator(
   bindTo: 'computed' | 'methods',
   mapper: VuexMapper,
 ) {
-  return <T = unknown>(key: keyof T | string, namesapce?: string | undefined): VuexDecorator => {
+  return <T = unknown>(key: keyof T, namesapce?: string | undefined): VuexDecorator => {
     if (typeof(key) !== 'string') {
       throw Error(`key is not string: key=${key}, ns=${namesapce}`);
     }
