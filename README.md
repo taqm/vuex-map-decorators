@@ -105,8 +105,5 @@ $store.commit('sample/increment');
 // -> sample/increment
 ```
 
-## Future
-- Add test code
-
 ## License
 MIT
