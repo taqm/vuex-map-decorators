@@ -21,5 +21,5 @@ export declare const State: <T = unknown>(key: keyof T, namesapce?: string | und
 export declare const Mutation: <T = unknown>(key: keyof T, namesapce?: string | undefined) => VuexDecorator;
 export declare const Getter: <T = unknown>(key: keyof T, namesapce?: string | undefined) => VuexDecorator;
 export declare const Action: <T = unknown>(key: keyof T, namesapce?: string | undefined) => VuexDecorator;
-export declare function namespace<S = never, M = never, G = never, A = never>(n: string): DecoratorInterface<S, M, G, A>;
+export declare function namespace<S = never, M = never, G = never, A = never>(n?: string): DecoratorInterface<S, M, G, A>;
 export {};

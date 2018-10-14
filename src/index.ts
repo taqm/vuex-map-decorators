@@ -59,7 +59,7 @@ export function namespace<
   M = never,
   G = never,
   A = never,
->(n: string): DecoratorInterface<S, M, G, A> {
+>(n?: string): DecoratorInterface<S, M, G, A> {
   return {
     State: (k: keyof S) => State<S>(k, n),
     Mutation: (k: keyof M) => Mutation<M>(k, n),

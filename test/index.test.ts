@@ -71,14 +71,19 @@ describe('bindint test (namespace)', () => {
     interface ModuleState {
       message: string;
     }
-    const ns = namespace<ModuleState>('sample');
+    const ns = namespace<TestState>();
+    const subNs = namespace<ModuleState>('sample');
     @Component
     class TestSample extends Vue {
-      @ns.State('message')
+      @ns.State('nickname')
+      nickname!: string;
+
+      @subNs.State('message')
       message!: string;
     }
     const store = createStore();
     const obj = new TestSample({ store });
+    chai.assert.equal(obj.nickname, 'taqm');
     chai.assert.equal(obj.message, 'hello world');
   });
 });
