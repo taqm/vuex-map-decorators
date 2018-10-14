@@ -10,7 +10,9 @@
   "license": "MIT",
   "main": "lib/index.js",
   "scripts": {
-    "build": "tsc",
+    "transpile": "tsc",
+    "prebuild": "rm -rf lib",
+    "build": "run-s test transpile",
     "test": "rm -rf work && webpack && testem ci"
   },
   "devDependencies": {
@@ -20,6 +22,7 @@
     "awesome-typescript-loader": "^5.2.1",
     "chai": "^4.2.0",
     "mocha": "^5.2.0",
+    "npm-run-all": "^4.1.3",
     "testem": "^2.13.0",
     "ts-node": "^7.0.1",
     "tslint": "^5.11.0",
