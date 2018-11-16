@@ -13,7 +13,8 @@
     "transpile": "tsc",
     "prebuild": "rm -rf lib",
     "build": "run-s test transpile",
-    "test": "rm -rf work && webpack && testem ci"
+    "test": "rm -rf work && webpack && testem ci",
+    "test:gui": "rm -rf work && webpack && testem"
   },
   "devDependencies": {
     "@types/chai": "^4.1.6",
