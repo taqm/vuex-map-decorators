@@ -11,11 +11,11 @@ import {
 } from './test-store';
 
 import {
-   State,
-   Mutation,
-   Getter,
-   Action,
-   namespace,
+  State,
+  Mutation,
+  Getter,
+  Action,
+  namespace,
 } from '../src/index';
 
 Vue.use(Vuex);
