@@ -20,51 +20,10 @@ import {
 
 Vue.use(Vuex);
 
-describe('binding test("normal")', () => {
-  it('State', () => {
-    @Component
-    class TestSample extends Vue {
-      @State<TestState>('nickname')
-      nickname!: string;
-    }
-    const obj = new TestSample({ store: createStore() });
-    chai.assert.equal(obj.nickname, 'taqm');
-  });
-
-  it('Mutation', () => {
-    @Component
-    class TestSample extends Vue {
-      @Mutation<TestMutations>('addCount')
-      addCount!: (param: { num: number }) => void;
-    }
-    const store = createStore();
-    const obj = new TestSample({ store });
-    chai.assert.equal(store.state.count, 0);
-    obj.addCount({ num: 5 });
-    chai.assert.equal(store.state.count, 5);
-  });
-  it('Getter', () => {
-    @Component
-    class TestSample extends Vue {
-      @Getter<TestGetters>('greeting')
-      greeting!: string;
-    }
-    const store = createStore();
-    const obj = new TestSample({ store });
-  });
-  it('Action', () => {
-    @Component
-    class TestSample extends Vue {
-      @Action<TestActions>('sampleAction')
-      sampleAction!: (payload: { num: number }) => {};
-    }
-    const store = createStore();
-    const obj = new TestSample({ store });
-    chai.assert.equal(store.state.count, 0);
-    obj.sampleAction({ num: 5 });
-    chai.assert.equal(store.state.count, 10);
-  });
-});
+import './state.test';
+import './mutation.test';
+import './getter.test';
+import './action.test';
 
 describe('bindint test (namespace)', () => {
   it('Sample', () => {
@@ -95,6 +54,7 @@ describe('key test', () => {
     chai.assert.equal(Getter<TestGetters>('greeting').key, 'greeting');
     chai.assert.equal(Action<TestActions>('sampleAction').key, 'sampleAction');
   });
+
   it('namespace', () => {
     const ns = namespace<
       TestState,

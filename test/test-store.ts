@@ -3,6 +3,9 @@ import Vuex from 'vuex';
 export interface State {
   count: number;
   nickname: string;
+  nested: {
+    nestedText: string;
+  };
 }
 
 export interface Mutations {
@@ -11,6 +14,7 @@ export interface Mutations {
 
 export interface Getters {
   greeting: string;
+  greet: (name: string) => string;
 }
 
 export interface Actions {
@@ -22,7 +26,10 @@ const mutations = {
   },
 };
 const getters = {
-  greeting: (payload: { nickname: string }) => `hello ${payload.nickname}`,
+  greeting: (state: { nickname: string }) => `hello ${state.nickname}`,
+  greet: (state: { nickname: string }) => (pre: string) => (
+    `${pre} ${state.nickname}`
+  ),
 };
 const actions = {
   sampleAction: (ctx: any, payload: Actions['sampleAction']) => {
@@ -38,6 +45,9 @@ export function createStore() {
     state: {
       count: 0,
       nickname: 'taqm',
+      nested: {
+        nestedText: 'nested text',
+      },
     },
     modules: {
       sample: {
