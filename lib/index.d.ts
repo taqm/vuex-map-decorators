@@ -7,19 +7,19 @@ export declare type IfNotNever<T, R> = {
 interface VuexDecorator extends VueDecorator {
     key: string;
 }
-declare type DecoratorMaker<T> = (k: keyof T) => VuexDecorator;
+declare type DecoratorMaker<K> = (k: K) => VuexDecorator;
 declare type DecoratorInterface<S, M, G, A> = (IfNotNever<S, {
-    State: DecoratorMaker<S>;
+    State: DecoratorMaker<StateKey<S>>;
 }> & IfNotNever<M, {
-    Mutation: DecoratorMaker<M>;
+    Mutation: DecoratorMaker<MutationKey<M>>;
 }> & IfNotNever<G, {
-    Getter: DecoratorMaker<G>;
+    Getter: DecoratorMaker<keyof G>;
 }> & IfNotNever<A, {
-    Action: DecoratorMaker<A>;
+    Action: DecoratorMaker<keyof A>;
 }>);
 declare type StateIntercepter<T> = (state: T) => any;
-declare type MutationsIntercepter<T> = {
-    <K extends keyof T>(commit: <KK = K>(key: KK, payload?: T[K]) => void, payload: any): void;
+declare type MutationsIntercepter<T, K extends keyof T = keyof T> = {
+    (commit: (key: K, payload?: T[K]) => void, ...args: any[]): void;
 };
 declare type StateKey<S> = keyof S | StateIntercepter<S>;
 declare type MutationKey<M> = keyof M | MutationsIntercepter<M>;

@@ -51,8 +51,12 @@ export function createStore() {
     },
     modules: {
       sample: {
+        mutations,
         namespaced: true,
-        state: { message: 'hello world' },
+        state: {
+          message: 'hello world',
+          count: 0,
+        },
       },
     },
   });

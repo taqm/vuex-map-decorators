@@ -41,4 +41,32 @@ describe('Mutation', () => {
     obj.addCount(3);
     chai.assert.equal(store.state.count, 3);
   });
+
+  it('namespaced normal', () => {
+    const ns = namespace<never, Mutations>('sample');
+    @Component
+    class TestSample extends Vue {
+      @ns.Mutation('addCount')
+      addCount!: (param: { num: number }) => void;
+    }
+    const store = createStore() as any;
+    const obj = new TestSample({ store });
+    obj.addCount({ num: 4 });
+    chai.assert.equal(store.state.sample.count, 4);
+  });
+
+  it('namespaced custom', () => {
+    const ns = namespace<never, Mutations>('sample');
+    @Component
+    class TestSample extends Vue {
+      @ns.Mutation((commit, num) => {
+        commit('addCount', { num });
+      })
+      addCount!: (num: number) => void;
+    }
+    const store = createStore() as any;
+    const obj = new TestSample({ store });
+    obj.addCount(6);
+    chai.assert.equal(store.state.sample.count, 6);
+  });
 });

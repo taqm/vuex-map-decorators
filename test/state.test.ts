@@ -48,11 +48,15 @@ describe('State', () => {
 
       @subNs.State('message')
       message!: string;
+
+      @subNs.State(({ message }) => `custom ${message}`)
+      customMessage!: string;
     }
     const store = createStore();
     const obj = new TestSample({ store });
     chai.assert.equal(obj.nickname, 'taqm');
     chai.assert.equal(obj.message, 'hello world');
+    chai.assert.equal(obj.customMessage, 'custom hello world');
   });
 
 });

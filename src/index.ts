@@ -20,19 +20,19 @@ interface VuexDecorator extends VueDecorator {
   key: string;
 }
 
-type DecoratorMaker<T> = (k: keyof T) => VuexDecorator;
+type DecoratorMaker<K> = (k: K) => VuexDecorator;
 type DecoratorInterface<S, M, G, A> = (
-  & IfNotNever<S, { State: DecoratorMaker<S> }>
-  & IfNotNever<M, { Mutation: DecoratorMaker<M> }>
-  & IfNotNever<G, { Getter: DecoratorMaker<G> }>
-  & IfNotNever<A, { Action: DecoratorMaker<A> }>
+  & IfNotNever<S, { State: DecoratorMaker<StateKey<S>> }>
+  & IfNotNever<M, { Mutation: DecoratorMaker<MutationKey<M>> }>
+  & IfNotNever<G, { Getter: DecoratorMaker<keyof G> }>
+  & IfNotNever<A, { Action: DecoratorMaker<keyof A> }>
 );
 
 type StateIntercepter<T> = (state: T) => any;
-type MutationsIntercepter<T> = {
-  <K extends keyof T>(
-    commit: <KK = K>(key: KK, payload?: T[K]) => void,
-    payload: any,
+type MutationsIntercepter<T, K extends keyof T = keyof T> = {
+  (
+    commit: (key: K, payload?: T[K]) => void,
+    ...args: any[]
   ): void;
 };
 type GettersIntercepter<T> = {
