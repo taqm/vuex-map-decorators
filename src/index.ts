@@ -56,18 +56,18 @@ function createVuexDecorator(
   return <
     T = unknown,
     I extends (keyof T | Interceptor<T>) = keyof T
-  >(key: I, namesapce?: string | undefined): VuexDecorator => {
+  >(key: I, namespace?: string | undefined): VuexDecorator => {
     const dec = createDecorator((target, prop) => {
       if (!target[bindTo]) {
         target[bindTo] = {};
       }
       const o: any = [{ [prop]: key }];
-      if (namesapce) o.unshift(namesapce);
+      if (namespace) o.unshift(namespace);
       target[bindTo]![prop] = mapper.apply(target, o)[prop];
     }) as VuexDecorator;
 
     if (typeof(key) === 'string') {
-      dec.key = namesapce ? `${namesapce}/${key}` : key;
+      dec.key = namespace ? `${namespace}/${key}` : key;
     }
     return dec;
   };
