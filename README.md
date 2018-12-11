@@ -1,3 +1,5 @@
+[![npm version](https://badge.fury.io/js/vuex-map-decorators.svg)](https://badge.fury.io/js/vuex-map-decorators)
+
 # vuex-map-decorators
 
 # Dependency
