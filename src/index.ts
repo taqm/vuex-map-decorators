@@ -63,7 +63,7 @@ function createVuexDecorator(
       }
       const o: any = [{ [prop]: key }];
       if (namespace) o.unshift(namespace);
-      target[bindTo]![prop] = mapper.apply(target, o)[prop];
+      target[bindTo]![prop] = (mapper as any).apply(target, o)[prop];
     }) as VuexDecorator;
 
     if (typeof(key) === 'string') {
