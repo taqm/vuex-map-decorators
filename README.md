@@ -97,6 +97,49 @@ ns.Mutation // <- Error
 ```
 Only predefined ones can be referenced.
 
+## use custom mapping
+
+You can give mapping function to 'Decorator'.  
+Of course it is type safety!
+
+### State
+
+```ts
+interface State {
+  user: {
+    name: string;
+    age: number;
+  };
+}
+const ns = namespace<State>('sample');
+
+@ns.State(state => state.user.name)
+userName!: string;
+```
+
+### Mutation
+
+```ts
+// Payload format interface
+interface Mutations {
+  setUserData: { name: string, age: number };
+}
+
+const ns = namespace<State, Mutations>('sample');
+
+@ns.Mutation((commit, name, age) => {
+  commit('setUser', { name, age });
+})
+setUserData!: (name: string, age: number) => void;
+```
+
+There is no need to worry about the payload format of Mutasion function
+
+### Getter, Actions
+sorry...  
+Unsupported...
+
+
 ## use native vuex context
 ```typescript
 const ns = namespace<...>('sample');
