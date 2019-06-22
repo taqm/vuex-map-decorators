@@ -1,6 +1,6 @@
 {
   "name": "vuex-map-decorators",
-  "version": "1.2.4",
+  "version": "1.2.5",
   "description": "The TypeScript decorators that map vuex store to component",
   "keywords": [
     "typescript",
@@ -23,27 +23,27 @@
   },
   "devDependencies": {
     "@types/chai": "^4.1.7",
-    "@types/mocha": "^5.2.5",
-    "@types/webpack": "^4.4.21",
+    "@types/mocha": "^5.2.7",
+    "@types/webpack": "^4.4.33",
     "awesome-typescript-loader": "^5.2.1",
     "chai": "^4.2.0",
-    "mocha": "^5.2.0",
+    "mocha": "^6.1.4",
     "npm-run-all": "^4.1.5",
-    "testem": "^2.14.0",
-    "ts-node": "^7.0.1",
-    "tslint": "^5.11.0",
+    "testem": "^2.16.0",
+    "ts-node": "^8.3.0",
+    "tslint": "^5.18.0",
     "tslint-config-airbnb": "^5.11.1",
-    "tsutils": "^3.5.2",
-    "typescript": "^3.2.2",
+    "tsutils": "^3.14.0",
+    "typescript": "^3.5.2",
     "vue": "^2.5.21",
     "vue-class-component": "^6.3.2",
     "vuex": "^3.0.1",
-    "webpack": "^4.27.1",
-    "webpack-cli": "^3.1.2"
+    "webpack": "^4.35.0",
+    "webpack-cli": "^3.3.4"
   },
   "peerDependencies": {
     "vue": "^2.5.0",
-    "vue-class-component": "^6.0.0",
+    "vue-class-component": ">6.0.0",
     "vuex": "^3.0.0"
   },
   "repository": {
