@@ -1,6 +1,6 @@
 {
   "name": "vuex-map-decorators",
-  "version": "1.2.5",
+  "version": "1.2.6",
   "description": "The TypeScript decorators that map vuex store to component",
   "keywords": [
     "typescript",
